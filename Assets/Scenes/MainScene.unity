@@ -297,10 +297,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 500715601471505570, guid: c76a984f9a7507eeabf52165aa73986d, type: 3}
-      propertyPath: moveSpeed
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1303672118477466242, guid: c76a984f9a7507eeabf52165aa73986d, type: 3}
       propertyPath: m_Name
       value: P_Player
@@ -344,10 +340,6 @@ PrefabInstance:
     - target: {fileID: 1827408455604793400, guid: c76a984f9a7507eeabf52165aa73986d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7463691016041181104, guid: c76a984f9a7507eeabf52165aa73986d, type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
