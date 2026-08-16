@@ -10,9 +10,11 @@ public class PlayerMovement : MonoBehaviour
 
     private static readonly int SpeedHash = Animator.StringToHash("Speed");
     private InputAction _moveAction;
+    private CharacterController _controller;
 
     void Awake()
     {
+        _controller = GetComponent<CharacterController>();
         _moveAction = GetComponent<PlayerInput>().actions["Move"];
     }
 
@@ -21,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
         Vector2 input = _moveAction.ReadValue<Vector2>();
         Vector3 movement = transform.right * input.x + transform.forward * input.y;
 
-        transform.position += movement.normalized * moveSpeed * Time.deltaTime;
+        _controller.Move(movement.normalized * moveSpeed * Time.deltaTime);
 
         animator.SetFloat(SpeedHash, movement.magnitude);
     }

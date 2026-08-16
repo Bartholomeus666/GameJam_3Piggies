@@ -5,6 +5,7 @@ public class FirstPersonCamera : MonoBehaviour
 {
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private float mouseSensitivity = 0.1f;
+    [SerializeField] private float gamepadSensitivity = 200f;
     [SerializeField] private float minPitch = -85f;
     [SerializeField] private float maxPitch = 85f;
 
@@ -24,7 +25,12 @@ public class FirstPersonCamera : MonoBehaviour
 
     void Update()
     {
-        Vector2 look = _lookAction.ReadValue<Vector2>() * mouseSensitivity;
+        Vector2 raw = _lookAction.ReadValue<Vector2>();
+        bool isMouse = _lookAction.activeControl?.device is Mouse;
+
+        Vector2 look = isMouse
+            ? raw * mouseSensitivity
+            : raw * gamepadSensitivity * Time.deltaTime;
 
         // Yaw rotates the body, pitch rotates only the camera
         transform.Rotate(Vector3.up * look.x);

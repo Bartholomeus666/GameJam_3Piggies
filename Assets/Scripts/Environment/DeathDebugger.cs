@@ -3,9 +3,12 @@ using UnityEngine;
 
 public class DeathDebugger : MonoBehaviour
 {
+    [SerializeField] private Transform _skewer;
+    
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Player")) return;
-        Debug.Log("Player entered: " + other.name);
+        var pig = other.GetComponentInParent<Pig>();
+        if (pig == null || pig.IsCaptured) return;
+        pig.Capture(_skewer);
     }
 }
